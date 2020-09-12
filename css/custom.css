@@ -1,0 +1,92 @@
+.H3GREEN {
+    color: #078527;
+    font-weight: bold;
+}
+
+.H3GREEN:hover {
+    color: #f2a52a;
+}
+
+.ROBOTO {
+    font-family: 'Roboto', sans-serif ;
+}
+
+
+.H3 {
+    color: #f2a52a;
+    font-weight: bold;
+}
+
+.H3:hover {
+    color:  #078527;
+}
+
+.Bold {
+    font-weight: bold;
+}
+
+.sideBar {
+    border: 1px solid #f2a52a;
+}
+
+.sideBarTitleContainer{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: #39486d;
+}
+
+.sideBarTitle {
+    font-family: 'Fjalla One', sasn-serif;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.sideBarBody {
+    background-color: #dddddd;
+}
+
+
+
+.sideBarList {
+    padding: 10px;
+    
+}
+
+.H5 {
+    color: #39486d;
+    font-weight: bold;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-container > div {
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+    .companyLogo {
+      visibility: hidden;
+      clear: both;
+      float: left;
+      margin: 10px auto 5px 20px;
+      width: 28%;
+      display: none;
+    }
+  }
+
+
+
+
+
+
+
+
+

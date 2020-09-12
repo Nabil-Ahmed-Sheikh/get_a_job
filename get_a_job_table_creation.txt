@@ -1,0 +1,187 @@
+CREATE TABLE industry_type(
+    id int AUTO_INCREMENT,
+    name varchar(255),
+    description varchar(255),
+    PRIMARY KEY(id)	
+);
+
+CREATE TABLE company_admin (
+    id int AUTO_INCREMENT,
+    password varchar(255),
+    companyName varchar(255),
+    industryType int,
+    businessDescription text,
+    websiteURL varchar(255),
+    contactPersonName varchar(255),
+    contactPersonDesignation varchar(255),
+    contactPersonEmail varchar(255) UNIQUE,
+    contactPersonNumber varchar(255),
+    PRIMARY KEY(id),
+    FOREIGN KEY(industryType) REFERENCES industry_type(id)
+);
+
+CREATE TABLE admin (
+    id int AUTO_INCREMENT,
+    password varchar(255),
+    name varchar(255),
+    email varchar(255) UNIQUE,
+    phoneNumber varchar(255),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE seeker (
+    id int AUTO_INCREMENT,
+    email varchar(255) UNIQUE,
+    password varchar(255),
+    phoneNumber varchar(255),
+    PRIMARY KEY (id)
+);
+
+
+CREATE TABLE circular (
+    id INT AUTO_INCREMENT,
+    uid INT,
+    position varchar(255),
+    bannerText varchar(255),
+    vacancy INT,
+    companyName varchar(255),
+    photo varchar(255),
+    description text,
+    experienceRequired Float,
+    location varchar(255),
+    postDate date,
+    deadline date,
+    salaryMax Float,
+    salaryMin Float,
+    jobType varchar(255),
+    jobLevel varchar(255),
+    PRIMARY KEY (id),
+    FOREIGN KEY (uid) REFERENCES company_admin(id)
+);
+
+
+
+CREATE TABLE personalInfo (
+    id INT UNIQUE,
+    firstName varchar(255),
+    lastName varchar(255),
+    nationality varchar(255),
+    fatherName varchar(255),
+    motherName varchar(255),
+    dateOfBirth date,
+    nid varchar(255),
+    passportNumber varchar(255),
+    passportissueDate date,
+    phoneNumber1 varchar(255),
+    phoneNumber2 varchar(255),
+    maritalStatus varchar(255),
+    email varchar(255),
+    alternativeEmail varchar(255),
+    currentAddress varchar(255),
+    permanentAddress varchar(255),
+    image varchar(255),
+    FOREIGN KEY (id) REFERENCES seeker(id)
+);
+
+create TABLE education(
+	id  int AUTO_INCREMENT,
+    uid int,
+    degreeLevel varchar(255),
+    degreeTitle varchar(255),
+    cgpa float,
+    scale float,
+    divison varchar(50),
+    passYear date,
+    institution varchar(255),
+    PRIMARY KEY (id),
+    FOREIGN KEY (uid) REFERENCES personalinfo(id) 
+    
+);
+
+CREATE TABLE employment (
+    id int AUTO_INCREMENT,
+    uid int,
+    companyName varchar(255),
+    location varchar(255),
+    department varchar(255),
+    designation varchar(255),
+    responsibility text,
+    workedFrom date,
+    workedTill date,
+    PRIMARY KEY (id),
+    FOREIGN KEY (uid) REFERENCES personalinfo(id)
+);
+
+CREATE TABLE skill (
+	id INT AUTO_INCREMENT,
+    uid INT,
+    skillName varchar(50),
+	percentage INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (uid) REFERENCES personalinfo(id)
+);
+
+CREATE TABLE applyTable (
+	id INT,
+    uid INT,
+    aid INT,
+    applyDate date,
+    FOREIGN KEY (id) REFERENCES circular(id),
+    FOREIGN KEY (uid) REFERENCES company_admin(id),
+    FOREIGN KEY (aid) REFERENCES seeker(id),
+    PRIMARY KEY (id, uid, aid)
+);
+
+
+CREATE TABLE exam (
+	id int AUTO_INCREMENT,
+    uid int,
+    name varchar(255),
+    description varchar(255),
+    PRIMARY  KEY (id),
+    FOREIGN KEY (uid) REFERENCES company_admin(id)
+);
+
+create TABLE exam_set (
+	id int AUTO_INCREMENT,
+    uid int,
+    eid int,
+    name varchar(255),
+    PRIMARY KEY(id),
+    FOREIGN KEY (eid) REFERENCES exam(id),
+    FOREIGN key(uid) REFERENCES company_admin(id)
+);
+
+CREATE TABLE question (
+	id int AUTO_INCREMENT,
+    sid int,
+    question varchar(255),
+	PRIMARY KEY(id),
+    FOREIGN key(sid) REFERENCES exam_set(id)
+);
+
+CREATE TABLE exam_schedule (
+	id INT AUTO_INCREMENT,
+    uid INT,
+    sid INT,
+    eid INT,
+    aid INT,
+    lastDate date,
+    stat varchar(255),
+    PRIMARY KEY (id),
+    FOREIGN KEY (uid) REFERENCES company_admin(id),
+    FOREIGN KEY (aid) REFERENCES seeker(id),
+    FOREIGN KEY (sid) REFERENCES exam_set(id),
+    FOREIGN KEY (eid) REFERENCES exam (id)
+); 
+
+
+CREATE TABLE answer (
+	id int,
+    qid int,
+    scId int,
+    answer text,
+    submitDate date,
+    PRIMARY key(id)
+);
+
