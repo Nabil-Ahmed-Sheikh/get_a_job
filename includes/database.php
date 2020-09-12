@@ -16,9 +16,9 @@ class MySQLDatabase{
   // open db connection and select db
   public function open_connection(){
     // Local
-    $this->connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
+    // $this->connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
     // Remote
-    //  $this->connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+     $this->connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME, DB_PORT);
     if(!$this->connection){
       die("Database connection failed: " . mysql_error());
     }
