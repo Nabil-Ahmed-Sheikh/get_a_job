@@ -4,6 +4,8 @@
 ?>
  <?php
 if(isset($_POST['submit'])) {
+    var_dump($_POST);
+    exit;
     if($_POST['sender'] == '' || $_POST['senderName'] == '' || $_POST['receiver'] == '' || 
         $_POST['receiverName'] == '' || $_POST['subject'] == '' || $_POST['body'] == '') {
             

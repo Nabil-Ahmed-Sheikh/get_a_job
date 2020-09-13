@@ -76,6 +76,7 @@
                     <div class="candidate-wrapper">
 
                     <?php foreach($list as $schedule) {
+                        
                         $item = PersonalInfo::find_by_id($schedule->aid);
                         $circular = Circular::find_by_id($schedule->cid);
                     
@@ -122,11 +123,11 @@
                             <div class="col-md-2 col-xs-3">
                                 <div class="candidate-cta ptb30">
                                     <a href="candidate-profile-1.html" class="btn btn-blue btn-small btn-effect" 
-                                        data-toggle="modal" data-target="#exampleModal" ><span><i class="fas fa-envelope"></i></span></a>
+                                        data-toggle="modal" data-target="<?php echo '#'.$schedule->id ?>" ><span><i class="fas fa-envelope"></i></span></a>
                                 </div>
                             </div>
 
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="<?php echo $schedule->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                     <div class="modal-header">
