@@ -12,8 +12,3 @@ Some featueres:
 5. Company admin will be able to create questions, prepare set of questions for taking test.
 6. Company admin will recruit job seekers based on exam result.
 7. Job circulars should be categorized based on company type, job type, salary range etc.
-8. Demo/Reference:  bdjobs.com, easy.jobs (Functionalities are not 100% simillar)
-
-
-
-Project completion date: 28 June, 2020
